@@ -90,9 +90,20 @@ class TestDBStorage(unittest.TestCase):
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_get(self):
         """Test that get method returns object for given id"""
+        storage = DBStorage()
+        storage.reload()
+        state = State(name="Baku")
+        storage.new(state)
+        print(storage.get(State, state.id))
 
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_count(self):
         """
             Test that count method returns number of instances for given class
         """
+        storage = DBStorage()
+        storage.reload()
+        state = State(name="Baku")
+        storage.new(state)
+        count = storage.count()
+        self.assertNotEqual(count, 0)
