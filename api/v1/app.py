@@ -2,7 +2,7 @@
 """Python script that starts a Flask web application"""
 
 
-from flask import Flask
+from flask import Flask, jsonify
 from models import storage
 from api.v1.views import app_views
 from os import getenv
@@ -10,6 +10,12 @@ from os import getenv
 
 app = Flask(__name__)
 app.register_blueprint(app_views)
+
+
+@app.errorhandler(404)
+def not_found(e):
+    """404 not found error case"""
+    return jsonify({"error": "Not found"})
 
 
 @app.teardown_appcontext
