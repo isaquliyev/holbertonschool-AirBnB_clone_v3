@@ -2,10 +2,10 @@
 """ Index module """
 
 from api.v1.views import app_views
-import json
+from flask import jsonify
 
 
 @app_views.route('/status', strict_slashes=False)
 def status():
     """Simple function that returns status: ok"""
-    return json.dumps({"status": "OK"})
+    return jsonify({"status": "OK"})
