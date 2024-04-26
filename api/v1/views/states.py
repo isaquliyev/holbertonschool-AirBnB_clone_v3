@@ -9,8 +9,8 @@ from models.state import State
 
 @app_views.route('/states', methods=['GET', 'POST'], strict_slashes=False)
 @app_views.route('/states/<state_id>',
-                methods=['GET', 'DELETE', 'PUT'],
-                strict_slashes=False)
+                 methods=['GET', 'DELETE', 'PUT'],
+                 strict_slashes=False)
 def states(state_id=None):
     """Retrieve states"""
     status_code = 200
