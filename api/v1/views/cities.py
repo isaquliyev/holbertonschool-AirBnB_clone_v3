@@ -21,11 +21,11 @@ def cities(state_id=None, city_id=None):
         if state is None:
             abort(404)
         new_city = request.get_json(silent=True)
-        new_city['state_id'] = state_id
         if new_city is None:
             abort(400, "Not a JSON")
         elif "name" not in new_city:
             abort(400, "Missing name")
+        new_city['state_id'] = state_id
         new_city = City(**new_city)
         new_city.save()
         city_id = new_city.id
